@@ -1,0 +1,44 @@
+@font-face {
+    font-family: Roboto;
+    src: url(./assets/RobotoLight.ttf);
+    font-weight: 300;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(./assets/RobotoRegular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(./assets/RobotoMedium.ttf);
+    font-weight:500 ;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(./assets/RobotoBold.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: Roboto;
+    src: url(./assets/RobotoBlack.ttf);
+    font-weight: 900;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #16161a;
+    font-family: Roboto, sans-serif ;
+    font-weight: 4000;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
