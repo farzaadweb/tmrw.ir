@@ -87,41 +87,48 @@ const smHeaderStatus = ref<boolean>(false);
         </button>
       </div>
     </div>
-    <div v-if="smHeaderStatus" class="bg-white overflow-hidden py-4 px-4 -mx-4">
-      <ul class="text-base">
-        <li>Home</li>
-        <li class="mt-3">Shows</li>
-        <li class="mt-3">AboutUs</li>
-        <li class="mt-3">API</li>
-      </ul>
-    </div>
-    <div v-if="searchBarStatus" class="bg-white py-2 px-4 -mx-4">
-      <div class="flex items-center justify-between">
-        <div class="w-full">
-          <Icon icon="ph:magnifying-glass" class="text-2xl inline" />
-          <input
-            type="text"
-            placeholder="Search for a movie, tv show, person ..."
-            class="text-xs outline-none ml-2"
-            v-model="searchText"
-          />
+    <Transition
+      ><div
+        v-if="smHeaderStatus"
+        class="bg-white overflow-hidden py-4 px-4 -mx-4"
+      >
+        <ul class="text-base">
+          <li>Home</li>
+          <li class="mt-3">Shows</li>
+          <li class="mt-3">AboutUs</li>
+          <li class="mt-3">API</li>
+        </ul>
+      </div></Transition
+    >
+    <Transition>
+      <div v-if="searchBarStatus" class="bg-white py-2 px-4 -mx-4">
+        <div class="flex items-center justify-between">
+          <div class="w-full">
+            <Icon icon="ph:magnifying-glass" class="text-2xl inline" />
+            <input
+              type="text"
+              placeholder="Search for a movie, tv show, person ..."
+              class="text-xs outline-none ml-2"
+              v-model="searchText"
+            />
+          </div>
+          <div class="flex items-center">
+            <button
+              class="text-xl text-[#72757e] hover:text-black"
+              @click="searchText = ''"
+            >
+              <Icon icon="ph:x-fill" />
+            </button>
+          </div>
         </div>
-        <div class="flex items-center">
-          <button
-            class="text-xl text-[#72757e] hover:text-black"
-            @click="searchText = ''"
-          >
-            <Icon icon="ph:x-fill" />
-          </button>
+        <div class="mt-3">
+          <div v-if="searchResault"></div>
+          <div v-else>
+            <span class="text-xs text-[#72757e]">No any resault</span>
+          </div>
         </div>
-      </div>
-      <div class="mt-3">
-        <div v-if="searchResault"></div>
-        <div v-else>
-          <span class="text-xs text-[#72757e]">No any resault</span>
-        </div>
-      </div>
-    </div>
+      </div></Transition
+    >
   </div>
 </template>
 <style scoped>
