@@ -9,36 +9,36 @@ const smHeaderStatus = ref<boolean>(false);
 </script>
 
 <template>
-  <div
-    v-if="lgAndLarger"
-    class="w-full h-full mx-auto container px-6 flex items-center justify-between relative"
-  >
-    <div>
-      <!-- <img src="../assets/Wlogo.png" alt="tmrw logo" class="w-28" /> -->
-      <span class="linear-wipe font-bold text-3xl">TMRW</span>
-    </div>
-    <div>
-      <ul class="flex text-white">
-        <li class="mx-6">Home</li>
-        <li class="mx-6">Shows</li>
-        <li class="mx-6">AboutUs</li>
-        <li class="mx-6">API</li>
-      </ul>
-    </div>
-    <div class="">
-      <button @click="searchBarStatus = !searchBarStatus">
-        <Icon
-          :icon="searchBarStatus ? 'ph:x-fill' : 'ph:magnifying-glass'"
-          class="text-white text-2xl"
-        />
-      </button>
+  <div v-if="lgAndLarger" class="w-full h-full px-6 relative">
+    <div
+      class="w-full h-full mx-auto container flex items-center justify-between"
+    >
+      <div>
+        <span class="linear-wipe font-bold text-3xl">TMRW</span>
+      </div>
+      <div>
+        <ul class="flex text-white">
+          <li class="mx-6">Home</li>
+          <li class="mx-6">Shows</li>
+          <li class="mx-6">AboutUs</li>
+          <li class="mx-6">API</li>
+        </ul>
+      </div>
+      <div>
+        <button @click="searchBarStatus = !searchBarStatus">
+          <Icon
+            :icon="searchBarStatus ? 'ph:x-fill' : 'ph:magnifying-glass'"
+            class="text-white text-2xl"
+          />
+        </button>
+      </div>
     </div>
     <Transition
       ><div
         v-if="searchBarStatus"
-        class="w-full bg-white absolute right-0 top-16 px-4 pb-3"
+        class="w-full bg-white absolute right-0 top-16 px-6 pb-3"
       >
-        <div class="flex justify-between border-b py-3">
+        <div class="flex justify-between border-b py-3 mx-auto container">
           <div>
             <Icon
               icon="ph:magnifying-glass"
@@ -59,7 +59,7 @@ const smHeaderStatus = ref<boolean>(false);
             <Icon icon="ph:x-fill" class="" />
           </button>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 mx-auto container">
           <div v-if="searchResault"></div>
           <div v-else>
             <span class="text-sm text-[#72757e]">No any resault</span>
