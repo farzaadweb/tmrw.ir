@@ -9,9 +9,9 @@ const smHeaderStatus = ref<boolean>(false);
 </script>
 
 <template>
-  <div v-if="lgAndLarger" class="w-full h-full px-6 relative">
+  <div v-if="lgAndLarger" class="w-full h-full relative">
     <div
-      class="w-full h-full mx-auto container flex items-center justify-between"
+      class="w-full h-full mx-auto container flex items-center justify-between px-6"
     >
       <div>
         <span class="linear-wipe font-bold text-3xl">TMRW</span>
@@ -19,7 +19,7 @@ const smHeaderStatus = ref<boolean>(false);
       <div>
         <ul class="flex text-white">
           <li class="mx-6">Home</li>
-          <li class="mx-6">Shows</li>
+          <li class="mx-6"><router-link to="/shows">Shows</router-link></li>
           <li class="mx-6">AboutUs</li>
           <li class="mx-6">API</li>
         </ul>
@@ -94,7 +94,7 @@ const smHeaderStatus = ref<boolean>(false);
       >
         <ul class="text-base">
           <li>Home</li>
-          <li class="mt-3">Shows</li>
+          <li class="mt-3"><router-link to="/shows">Shows</router-link></li>
           <li class="mt-3">AboutUs</li>
           <li class="mt-3">API</li>
         </ul>
