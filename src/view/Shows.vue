@@ -5,5 +5,6 @@ fetchPopularMovies();
 </script>
 
 <template>
-  <MovieCarousel title="Top Popular" :lists="popularMoviesList" />
+  <secondaryNavigation />
+  <MovieCarousel title="Top Popular" :lists="popularMoviesList" class="mt-5" />
 </template>

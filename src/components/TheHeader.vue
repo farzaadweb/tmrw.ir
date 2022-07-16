@@ -13,18 +13,18 @@ const smHeaderStatus = ref<boolean>(false);
     <div
       class="w-full h-full mx-auto container flex items-center justify-between px-6"
     >
-      <div>
+      <div class="w-full">
         <span class="linear-wipe font-bold text-3xl">TMRW</span>
       </div>
-      <div>
-        <ul class="flex text-white">
-          <li class="mx-6">Home</li>
-          <li class="mx-6"><router-link to="/shows">Shows</router-link></li>
-          <li class="mx-6">AboutUs</li>
-          <li class="mx-6">API</li>
+      <div class="w-full z-50">
+        <ul class="flex justify-center items-center text-white">
+          <li>Home</li>
+          <li class="ml-12"><router-link to="/shows">Shows</router-link></li>
+          <li class="ml-12">AboutUs</li>
+          <li class="ml-12">API</li>
         </ul>
       </div>
-      <div>
+      <div class="w-full text-right">
         <button @click="searchBarStatus = !searchBarStatus">
           <Icon
             :icon="searchBarStatus ? 'ph:x-fill' : 'ph:magnifying-glass'"
@@ -36,7 +36,7 @@ const smHeaderStatus = ref<boolean>(false);
     <Transition
       ><div
         v-if="searchBarStatus"
-        class="w-full bg-white absolute right-0 top-16 px-6 pb-3"
+        class="w-full bg-white absolute right-0 top-16 px-6 pb-3 z-50"
       >
         <div class="flex justify-between border-b py-3 mx-auto container">
           <div>
@@ -69,7 +69,7 @@ const smHeaderStatus = ref<boolean>(false);
     >
   </div>
 
-  <div v-if="!lgAndLarger" class="w-full h-full px-4 relative">
+  <div v-if="!lgAndLarger" class="w-full h-full px-4 relative z-30">
     <div class="w-full h-full flex items-center justify-between">
       <div><span class="linear-wipe font-bold text-xl">TMRW</span></div>
       <div class="flex items-center">
@@ -90,18 +90,22 @@ const smHeaderStatus = ref<boolean>(false);
     <Transition
       ><div
         v-if="smHeaderStatus"
-        class="bg-white overflow-hidden py-4 px-4 -mx-4"
+        class="bg-white overflow-hidden py-4 px-4 -mx-4 relative z-50"
       >
         <ul class="text-base">
           <li>Home</li>
-          <li class="mt-3"><router-link to="/shows">Shows</router-link></li>
+          <li class="mt-3">
+            <router-link to="/shows" @click="smHeaderStatus = false"
+              >Shows</router-link
+            >
+          </li>
           <li class="mt-3">AboutUs</li>
           <li class="mt-3">API</li>
         </ul>
       </div></Transition
     >
     <Transition>
-      <div v-if="searchBarStatus" class="bg-white py-2 px-4 -mx-4">
+      <div v-if="searchBarStatus" class="bg-white py-2 px-4 -mx-4 z-50">
         <div class="flex items-center justify-between">
           <div class="w-full">
             <Icon icon="ph:magnifying-glass" class="text-2xl inline" />
