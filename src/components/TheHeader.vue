@@ -1,11 +1,29 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { fetchSearch } from "../api/search";
 import { lgAndLarger } from "../lib/responsive";
 
 const searchBarStatus = ref<boolean>(false);
 const searchText = ref<string>("");
-const searchResault = ref<any[]>();
 const smHeaderStatus = ref<boolean>(false);
+
+const searchResults = ref<any>([]);
+watch(searchText, async () => {
+  searchResults.value = await fetchSearch(searchText.value);
+  searchResults.value = searchResults.value.results;
+  console.log(searchResults.value);
+  if (searchResults.value) {
+    searchResults.value = searchResults.value.map((item: any) => {
+      item.poster_path = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
+      item.backdrop_path = `https://image.tmdb.org/t/p/original${item.backdrop_path}`;
+      return item;
+    });
+  }
+});
+function clearSearchResults() {
+  searchText.value = "";
+  searchResults.value = [];
+}
 </script>
 
 <template>
@@ -54,13 +72,32 @@ const smHeaderStatus = ref<boolean>(false);
           <button
             v-if="searchText"
             class="text-xl text-[#72757e] hover:text-black"
-            @click="searchText = ''"
+            @click="clearSearchResults"
           >
             <Icon icon="ph:x-fill" class="" />
           </button>
         </div>
         <div class="mt-3 mx-auto container">
-          <div v-if="searchResault"></div>
+          <div v-if="searchResults.length" class="grid grid-cols-5">
+            <div
+              v-for="(item, index) in searchResults"
+              :key="index"
+              class="flex bg-[#f0f0f0] py-2 px-2 my-4 mx-3 rounded-lg"
+            >
+              <img
+                :src="item.poster_path"
+                :alt="item.title"
+                class="w-28 rounded-lg"
+              />
+
+              <div class="flex flex-col justify-between items-end text-sm ml-3">
+                <span class="font-medium">{{ item.title }}</span>
+                <button class="flex items-center text-[#7f5af0] text-xs">
+                  <span>Show more</span><Icon icon="ph:caret-right" />
+                </button>
+              </div>
+            </div>
+          </div>
           <div v-else>
             <span class="text-sm text-[#72757e]">No any resault</span>
           </div>
@@ -126,7 +163,7 @@ const smHeaderStatus = ref<boolean>(false);
           </div>
         </div>
         <div class="mt-3">
-          <div v-if="searchResault"></div>
+          <div v-if="searchResults.length"></div>
           <div v-else>
             <span class="text-xs text-[#72757e]">No any resault</span>
           </div>

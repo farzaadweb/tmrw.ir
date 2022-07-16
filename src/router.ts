@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Shows from "./view/Shows.vue";
+import Shows from "./view/shows/Shows.vue";
 
 const routes: any[] = [
   {

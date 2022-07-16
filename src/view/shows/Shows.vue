@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import MovieCarousel from "../components/MovieCarousel.vue";
-import { popularMoviesList, fetchPopularMovies } from "../api/popularMovies";
+import MovieCarousel from "../../components/MovieCarousel.vue";
+import { popularMoviesList, fetchPopularMovies } from "../../api/popularMovies";
 fetchPopularMovies();
 </script>
 

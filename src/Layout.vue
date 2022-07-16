@@ -34,7 +34,7 @@ router.afterEach(() => {
     <div v-if="route.path === '/shows'" class="w-full h-12 bg-white">
       <SecondaryNavigation />
     </div>
-    <div class="mx-auto container py-8 lg:py-0 px-4 lg:px-6">
+    <div class="mx-auto container py-8 px-4 lg:px-6">
       <router-view />
     </div>
   </div>
