@@ -31,7 +31,7 @@ router.afterEach(() => {
     <div class="bg-[#212121] h-12 lg:h-16">
       <TheHeader />
     </div>
-    <div v-if="route.path === '/shows'" class="w-full h-12 bg-white">
+    <div v-if="route.path === '/shows'" class="w-full h-12 bg-[#94a1b2]">
       <SecondaryNavigation />
     </div>
     <div class="mx-auto container py-8 px-4 lg:px-6">

@@ -156,14 +156,26 @@ function clearSearchResults() {
           <div class="flex items-center">
             <button
               class="text-xl text-[#72757e] hover:text-black"
-              @click="searchText = ''"
+              @click="clearSearchResults"
             >
               <Icon icon="ph:x-fill" />
             </button>
           </div>
         </div>
         <div class="mt-3">
-          <div v-if="searchResults.length"></div>
+          <div v-if="searchResults.length" class="grid grid-cols-2">
+            <div v-for="item in searchResults" class="mx-2 my-3">
+              <img
+                :src="item.poster_path"
+                :alt="item.title"
+                class="rounded-lg"
+              />
+              <span class="text-sm mt-3">{{ item.title }}</span>
+              <button class="flex items-center text-[#7f5af0] text-sm">
+                <span>Show more</span><Icon icon="ph:caret-right" />
+              </button>
+            </div>
+          </div>
           <div v-else>
             <span class="text-xs text-[#72757e]">No any resault</span>
           </div>
