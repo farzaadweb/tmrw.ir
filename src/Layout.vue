@@ -1,40 +1,34 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { watch } from "vue";
 import TheHeader from "./components/TheHeader.vue";
-import { lgAndLarger } from "./lib/responsive";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import SecondaryNavigation from "./components/SecondaryNavigation.vue";
-const router = useRouter();
-const route = useRoute();
+import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
-const loadingBarStatus = ref<boolean>(false);
-router.beforeEach(() => {
-  loadingBarStatus.value = true;
-});
-router.afterEach(() => {
-  loadingBarStatus.value = false;
-});
+const breakpoints = useBreakpoints(breakpointsTailwind);
+let lgAndLarger = $ref<boolean>(breakpoints.greater("lg"));
+watch(
+  () => lgAndLarger,
+  (newDate: boolean) => {
+    lgAndLarger = newDate;
+  }
+);
+
+let route = useRoute();
 </script>
 
 <template>
   <div class="w-full relative">
-    <div class="absolute top-0 inset-x-0">
-      <div
-        class="h-1 transition-transform duration-1000 origin-left"
-        :class="
-          loadingBarStatus
-            ? 'scale-x-100 bg-[#2cb67d]'
-            : 'scale-x-0 bg-transparent'
-        "
-      ></div>
-    </div>
-    <div class="bg-[#212121] h-12 lg:h-16">
+    <div class="bg-black-3 h-12 sticky top-0 z-50">
       <TheHeader />
     </div>
-    <div v-if="route.path === '/shows'" class="w-full h-12 bg-[#94a1b2]">
+    <div
+      v-if="route.path === '/shows' || route.name == 'details'"
+      class="w-full h-12 bg-white-1"
+    >
       <SecondaryNavigation />
     </div>
-    <div class="mx-auto container py-8 px-4 lg:px-6">
+    <div>
       <router-view />
     </div>
   </div>

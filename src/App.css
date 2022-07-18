@@ -28,10 +28,46 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: #16161a;
-    font-family: Roboto, sans-serif ;
-    font-weight: 4000;
+@layer base{
+    html{
+        font-family: Roboto, sans-serif ;
+    }
+    h1{
+        @apply text-3xl lg:text-4xl;
+    }
+    h2{
+        @apply text-2xl lg:text-3xl;
+    }
+    h3{
+        @apply text-xl lg:text-2xl;
+    }
+    h4{
+        @apply text-lg lg:text-xl;
+    }
+    span{
+        @apply text-base lg:text-lg
+    }
+    body{
+        @apply bg-black-2 font-normal;
+    }
+    input{
+        @apply bg-transparent py-1 px-3 placeholder:text-xs lg:placeholder:text-sm outline-none; 
+    }
+}
+
+@layer components{
+    .flex-all{
+        @apply flex items-center justify-center
+    }
+    .flex-col-all{
+        @apply flex flex-col items-center justify-center
+    }
+    .mx-container{
+        @apply mx-auto container;
+    }
+    .size-full{
+        @apply w-full h-full;
+    }
 }
 .v-enter-active,
 .v-leave-active {

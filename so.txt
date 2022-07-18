@@ -1,0 +1,58 @@
+<!-- <div class=""></div>
+  <div style="height: calc(100vh - 6rem)" v-if="movieDetail">
+    <div class="h-3/4 relative z-40">
+      <div class="w-full h-full absolute z-20 background-gradient"></div>
+      <div
+        class="h-full absolute overflow-hidden lg:flex items-center justify-center z-10 bg-blue"
+      >
+        <img
+          :src="movieDetail.backdrop_path"
+          alt="banner"
+          class="h-full lg:h-auto blur-[2px]"
+        />
+      </div>
+      <div
+        class="w-full h-full relative z-40 mx-auto container px-4 lg:px-6 flex items-center"
+      >
+        <div
+          class="w-1/5 h-full relative z-40 flex items-center justify-center"
+        >
+          <div class="relative group">
+            <img
+              :src="movieDetail.poster_path"
+              :alt="movieDetail.title"
+              class="rounded-lg"
+            />
+            <button
+              class="absolute top-0 group-hover:backdrop-blur-[3px] group-hover:bg-black group-hover:bg-opacity-60 w-full h-full rounded-lg hidden group-hover:flex items-center justify-center transition-all"
+            >
+              <Icon
+                icon="ph:corners-in-duotone"
+                class="text-4xl text-white-1"
+              />
+            </button>
+          </div>
+        </div>
+        <div class="w-4/5 h-full pl-8 flex flex-col justify-center">
+          <div class="flex items-center">
+            <span class="text-3xl text-white-1 font-bold"
+              >{{ movieDetail.title }}
+            </span>
+            <span class="text-white-2 text-xl ml-2"
+              >({{ movieDetail.id }})</span
+            >
+          </div>
+          <div class="flex items-center mt-1">
+            <span class="text-base text-white-1 font-thin">{{
+              movieDetail.release_date
+            }}</span>
+            <span
+              v-for="(item, index) in movieDetail.production_countries"
+              class="text-base text-white-1 font-normal ml-1"
+              >({{ item.iso_3166_1 }})
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

@@ -1,4 +1,3 @@
-import { ref } from "vue";
 import { apiKey, apiTokenData } from "./apiTokens";
 
 export async function fetchSearch(subject: string) {
@@ -9,5 +8,5 @@ export async function fetchSearch(subject: string) {
   if (response.ok) {
     return response.json();
   }
-  return "error";
+  return "Error";
 }
