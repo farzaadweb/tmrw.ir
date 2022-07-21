@@ -143,7 +143,7 @@ watch(
           </div>
         </div>
         <div class="mt-24">
-          <h4 class="text-white-1 font-bold block">Other slides</h4>
+          <h4 class="text-white-1 font-bold block">Other posters</h4>
           <swiper
             :Scrollbar="true"
             :slides-per-view="lgAndLarger ? 5 : 2"
@@ -201,7 +201,7 @@ watch(
           :modules="[Pagination, Navigation]"
           class="mySwiper h-full"
         >
-          <swiper-slide v-for="item in movieDetail.videos.results">
+          <swiper-slide v-for="item in movieDetail.videos.results.slice(0, 5)">
             <iframe
               :src="`https://www.youtube.com/embed/${item.key}?autoplay=0&loop=1&controls=1&mute=0`"
               frameborder="0"
@@ -223,7 +223,7 @@ watch(
           :modules="[Autoplay]"
           class="mySwiper h-full"
         >
-          <swiper-slide v-for="item in movieDetail.videos.results">
+          <swiper-slide v-for="item in movieDetail.videos.results.slice(0, 5)">
             <iframe
               :src="`https://www.youtube.com/embed/${item.key}?autoplay=0&loop=1&controls=1&mute=0`"
               frameborder="0"
