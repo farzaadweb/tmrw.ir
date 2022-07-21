@@ -9,12 +9,13 @@ export const apiTokenData: { method: string; header: object } = {
   },
 };
 
-export function setCustomize(storage: any[]) {
-  if (storage) {
-    storage = storage.map((item: any) => {
-      item.poster_path = `https://image.tmdb.org/t/p/w500${item.poster_path}`;
-      item.backdrop_path = `https://image.tmdb.org/t/p/original${item.backdrop_path}`;
-      return item;
-    });
+export async function apiBaseURL() {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/configuration?api_key=${apiKey}`,
+    apiTokenData
+  );
+  if (response.ok) {
+    return response.json();
   }
+  return "Error";
 }

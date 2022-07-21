@@ -2,13 +2,12 @@
 import { $ref } from "vue/macros";
 import MovieCarousel from "../components/MovieCarousel.vue";
 import { fetchPopularMovies } from "../api/popularMovies";
-import { setCustomize } from "../api/apiTokens";
+import { apiBaseURL } from "../api/apiTokens";
 
 let popularMoviesList = $ref<any>([]);
 const runPopularMovies = async () => {
   popularMoviesList = await fetchPopularMovies();
   popularMoviesList = popularMoviesList.results;
-  setCustomize(popularMoviesList);
 };
 runPopularMovies();
 </script>

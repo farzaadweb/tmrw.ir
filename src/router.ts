@@ -12,6 +12,7 @@ const routes: any[] = [
     path: "/shows/:id",
     name: "details",
     component: Details,
+    prop: true,
   },
 ];
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from "vue";
+import { watch, inject } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
@@ -14,6 +14,7 @@ watch(
   }
 );
 
+const BASE_URL = inject<any>("BASE_URL");
 let {
   title,
   categorizeStatus = false,
@@ -65,7 +66,7 @@ let {
           >
             <div class="relative">
               <img
-                :src="item.poster_path"
+                :src="BASE_URL(item.poster_path, 'poster')"
                 :alt="item.title"
                 class="rounded-lg"
               />

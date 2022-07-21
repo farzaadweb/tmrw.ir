@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from "vue";
 import { fetchSearch } from "../api/search";
-import { setCustomize } from "../api/apiTokens";
+import { apiBaseURL } from "../api/apiTokens";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
 const breakpoints = useBreakpoints(breakpointsTailwind);
@@ -21,7 +21,6 @@ let searchResults = $ref<any>([]);
 const runSearch = async () => {
   searchResults = await fetchSearch(searchText);
   searchResults = searchResults.results;
-  setCustomize(searchResults);
 };
 watch(
   () => searchText,
@@ -87,11 +86,7 @@ function clearSearchResults() {
         </div>
         <div class="mt-3 h-48 mx-container overflow-y-auto">
           <div v-if="searchResults.length" class="grid grid-cols-1">
-            <div
-              v-for="(item, index) in searchResults"
-              :key="index"
-              class="flex py-2 px-3 mx-2 mt-2"
-            >
+            <div v-for="item in searchResults" class="flex py-2 px-3 mx-2 mt-2">
               <router-link
                 :to="{ name: 'details', params: { id: item.id } }"
                 class="flex items-center text-black-3"
