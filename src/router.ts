@@ -1,15 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router";
+import Search from "./view/Search.vue";
+import Details from "./view/Details.vue";
 import Shows from "./view/Shows.vue";
-import Details from "./view/slug/Details.vue";
 
 const routes: any[] = [
+  {
+    path: "/search",
+    name: "search",
+    component: Search,
+    prop: true,
+  },
   {
     path: "/shows",
     name: "shows",
     component: Shows,
   },
   {
-    path: "/shows/:id",
+    path: "/movie/:id",
     name: "details",
     component: Details,
     prop: true,

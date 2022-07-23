@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import SponsorHeader from "../components/SponsorHeader.vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
-import { fetchDetails } from "../../api/movieDetails";
+import { fetchDetails } from "../api/movieDetails";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { useRoute } from "vue-router";
 import { watch, inject } from "vue";
@@ -159,11 +160,16 @@ watch(
             <swiper-slide
               v-for="item in movieDetail.images.posters.slice(0, 10)"
             >
-              <img
-                :src="BASE_URL(item.file_path, 'posters')"
-                alt="another novie posters"
-                class="rounded-lg"
-              />
+              <button
+                @click="movieDetail.poster_path = item.file_path"
+                class="relative outline-none before-effect"
+              >
+                <img
+                  :src="BASE_URL(item.file_path, 'posters')"
+                  alt="another novie posters"
+                  class="rounded-lg"
+                />
+              </button>
             </swiper-slide>
           </swiper>
         </div>
@@ -171,19 +177,12 @@ watch(
     </div>
   </div>
 
-  <div
-    class="h-screen w-full relative border-b-2 border-white-1"
-    id="trailer"
-    v-if="movieDetail"
-  >
-    <div class="custom-pattern absolute -z-10 size-full"></div>
-    <div class="bg-white-1 w-full h-8 py-1 flex-all">
-      <span class="text-sm lg:text-base text-black-3 font-medium"
-        >This page is Sponsored by</span
-      >
-      <Icon icon="logos:youtube" class="text-lg lg:text-lg ml-3" />
-      <Icon icon="logos:netflix" class="text-lg lg:text-lg ml-3" />
-    </div>
+  <SponsorHeader>
+    <Icon icon="logos:youtube" class="text-lg lg:text-lg ml-3" />
+    <Icon icon="logos:netflix" class="text-lg lg:text-lg ml-3" />
+  </SponsorHeader>
+
+  <div class="h-screen w-full" id="trailer" v-if="movieDetail">
     <div class="mt-3 flex justify-center">
       <span class="text-xl lg:text-3xl text-white-1 font-medium">Trailers</span>
     </div>
@@ -201,7 +200,7 @@ watch(
           :modules="[Pagination, Navigation]"
           class="mySwiper h-full"
         >
-          <swiper-slide v-for="item in movieDetail.videos.results.slice(0, 5)">
+          <swiper-slide v-for="item in movieDetail.videos.results.slice(0, 4)">
             <iframe
               :src="`https://www.youtube.com/embed/${item.key}?autoplay=0&loop=1&controls=1&mute=0`"
               frameborder="0"
@@ -216,14 +215,9 @@ watch(
           :slides-per-view="lgAndLarger ? 4 : 2"
           :space-between="25"
           :loop="true"
-          :autoplay="{
-            delay: 8000,
-            disableOnInteraction: false,
-          }"
-          :modules="[Autoplay]"
           class="mySwiper h-full"
         >
-          <swiper-slide v-for="item in movieDetail.videos.results.slice(0, 5)">
+          <swiper-slide v-for="item in movieDetail.videos.results.slice(0, 4)">
             <iframe
               :src="`https://www.youtube.com/embed/${item.key}?autoplay=0&loop=1&controls=1&mute=0`"
               frameborder="0"
@@ -234,8 +228,6 @@ watch(
       </div>
     </div>
   </div>
-
-  <div class="w-full h-screen"></div>
 </template>
 <style scoped>
 .linear-wipe {
@@ -289,5 +281,19 @@ watch(
   opacity: 0.2;
   background-image: radial-gradient(#fffffe 1px, #0f0e17 0px);
   background-size: 30px 30px;
+}
+.before-effect::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.before-effect:hover:before {
+  opacity: 0.3;
 }
 </style>
