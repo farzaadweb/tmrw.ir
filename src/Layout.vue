@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { watch } from "vue";
-import TheHeader from "./components/TheHeader.vue";
-import { useRoute } from "vue-router";
 import SecondaryNavigation from "./components/SecondaryNavigation.vue";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
+import TheHeader from "./components/TheHeader.vue";
+import { useRoute } from "vue-router";
+import { watch } from "vue";
 
 const breakpoints = useBreakpoints(breakpointsTailwind);
 let lgAndLarger = $ref<boolean>(breakpoints.greater("lg"));
@@ -23,7 +23,11 @@ let route = useRoute();
       <TheHeader />
     </div>
     <div
-      v-if="route.path === '/shows' || route.name == 'details'"
+      v-if="
+        route.path === '/shows' ||
+        route.name == 'details' ||
+        route.name == 'showItems'
+      "
       class="w-full h-12 bg-white-1"
     >
       <SecondaryNavigation />

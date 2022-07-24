@@ -19,3 +19,14 @@ export async function apiBaseURL() {
   }
   return "Error";
 }
+
+export async function fetchgenre() {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&api_language=en-US`,
+    apiTokenData
+  );
+  if (response.ok) {
+    return response.json();
+  }
+  return "Error";
+}

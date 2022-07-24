@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, inject, computed } from "vue";
+import { watch, inject } from "vue";
 import { fetchSearch } from "../api/search";
 import { breakpointsTailwind, useBreakpoints } from "@vueuse/core";
 
@@ -47,7 +47,7 @@ watch(
     <div class="grid grid-cols-1 overflow-y-auto">
       <router-link
         v-for="item in searchResults"
-        :to="{ name: 'details', params: { id: item.id } }"
+        :to="{ name: 'details', params: { slug: item.id } }"
         class="bg-black-2 my-2 rounded-lg border border-white-2 hover:bg-white-2 hover:bg-opacity-5 transition-all flex"
       >
         <img

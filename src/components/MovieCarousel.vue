@@ -61,7 +61,7 @@ let {
       >
         <swiper-slide v-for="(item, index) in lists">
           <router-link
-            :to="{ name: 'details', params: { id: item.id } }"
+            :to="{ name: 'details', params: { slug: item.id } }"
             class="flex flex-col rounded-md"
           >
             <div class="relative">

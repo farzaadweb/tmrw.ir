@@ -24,12 +24,12 @@ let route = useRoute();
 let movieDetail = $ref<any | null>(null);
 
 const runMovieDetail = async () => {
-  movieDetail = await fetchDetails(route.params.id);
+  movieDetail = await fetchDetails(route.params.slug);
 };
 runMovieDetail();
 
 watch(
-  () => route.params.id,
+  () => route.params.slug,
   () => {
     runMovieDetail();
   }
@@ -230,36 +230,6 @@ watch(
   </div>
 </template>
 <style scoped>
-.linear-wipe {
-  background: linear-gradient(
-    to right,
-    #fff323 20%,
-    #fac213 40%,
-    #f77e21 60%,
-    #fff323 80%
-  );
-  background-size: 200% auto;
-  color: #000;
-  background-clip: text;
-  text-fill-color: transparent;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: shine 1s linear infinite;
-  animation: shine 2.5s linear infinite;
-}
-@-webkit-keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-.custom-shadow {
-  box-shadow: 0px 0px 40px black;
-}
 .hover-effect::before {
   content: "";
   display: block;
