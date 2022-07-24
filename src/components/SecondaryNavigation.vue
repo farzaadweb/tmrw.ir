@@ -26,19 +26,27 @@ genre();
             >
           </div>
         </li>
-        <li class="mx-3 lg:mx-6 flex items-center group relative z-10">
-          <span class="text-sm">Popular</span
-          ><Icon icon="ph:caret-down" class="text-sm ml-1" />
-          <div
-            class="px-3 pt-8 pb-2 bg-white-1 hidden group-hover:flex absolute -left-3 top-0 -z-10 w-max rounded-b-lg"
+        <li class="mx-3 lg:mx-6 text-sm z-20">
+          <router-link :to="{ name: 'showItems', params: { slug: 'popular' } }"
+            >Popular</router-link
           >
-            <span class="text-sm">by IMDB</span>
-            <span class="text-sm ml-3">by Votes</span>
-          </div>
         </li>
-        <li class="mx-3 lg:mx-6 text-sm z-20">Latest</li>
-        <li class="mx-3 lg:mx-6 text-sm z-20">Coming soon</li>
+        <li class="mx-3 lg:mx-6 text-sm z-20">
+          <router-link :to="{ name: 'showItems', params: { slug: 'topRated' } }"
+            >TopRated</router-link
+          >
+        </li>
+        <li class="mx-3 lg:mx-6 text-sm z-20">
+          <router-link :to="{ name: 'showItems', params: { slug: 'upcoming' } }"
+            >UpComing</router-link
+          >
+        </li>
       </ul>
     </div>
   </div>
 </template>
+<style scoped>
+a {
+  outline: none;
+}
+</style>
