@@ -182,7 +182,11 @@ watch(
     <Icon icon="logos:netflix" class="text-lg lg:text-lg ml-3" />
   </SponsorHeader>
 
-  <div class="h-screen w-full" id="trailer" v-if="movieDetail">
+  <div
+    class="h-screen w-full border-b border-white-2"
+    id="trailer"
+    v-if="movieDetail"
+  >
     <div class="mt-3 flex justify-center">
       <span class="text-xl lg:text-3xl text-white-1 font-medium">Trailers</span>
     </div>
@@ -228,8 +232,112 @@ watch(
       </div>
     </div>
   </div>
+
+  <div class="w-full h-screen mx-container px-4 lg:px-6 py-8 text-center">
+    <span class="text-white-1 text-xl lg:text-2xl font-bold">All Details</span>
+    <table class="w-full mt-10">
+      <tr>
+        <th>Name</th>
+        <td>{{ movieDetail.title }}</td>
+      </tr>
+      <tr>
+        <th>Genres</th>
+        <td class="flex items-center space-x-6">
+          <div v-for="item in movieDetail.genres" class="">
+            <Icon icon="ph:circle-dashed-fill" class="inline-block" />
+            <span class="text-base ml-1">{{ item.name }}({{ item.id }})</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Release Date</th>
+        <td>{{ movieDetail.release_date }}</td>
+      </tr>
+      <tr>
+        <th>Movie Budget</th>
+        <td>${{ movieDetail.budget }}</td>
+      </tr>
+      <tr>
+        <th>Movie Revenue</th>
+        <td>${{ movieDetail.revenue }}</td>
+      </tr>
+      <tr>
+        <th>Movie Keywords</th>
+        <td class="flex items-center space-x-6">
+          <div v-for="item in movieDetail.keywords.keywords.slice(0, 6)">
+            <Icon icon="ph:circle-dashed-fill" class="inline-block" />
+            <span class="text-base ml-1">{{ item.name }}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Movie Companies</th>
+        <td class="space-x-6 flex item-center">
+          <div v-for="item in movieDetail.production_companies">
+            <Icon icon="ph:circle-dashed-fill" class="inline-block" />
+            <span class="text-base ml-1"
+              >{{ item.name }} ({{ item.origin_country }})</span
+            >
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Languages</th>
+        <td class="space-x-6 flex item-center">
+          <div v-for="item in movieDetail.spoken_languages">
+            <Icon icon="ph:circle-dashed-fill" class="inline-block" />
+            <span class="text-base ml-1"
+              >{{ item.english_name }} ({{ item.iso_639_1 }})</span
+            >
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th>Vote Average</th>
+        <td>{{ movieDetail.vote_average }} / 10</td>
+      </tr>
+      <tr>
+        <th>Vote Count</th>
+        <td>{{ movieDetail.vote_count }} People</td>
+      </tr>
+      <tr>
+        <th>Popularity</th>
+        <td>{{ movieDetail.popularity }}</td>
+      </tr>
+      <tr>
+        <th>Movie Status</th>
+        <td>{{ movieDetail.status }}</td>
+      </tr>
+    </table>
+  </div>
 </template>
 <style scoped>
+tabel,
+th,
+td {
+  border: 1px solid #a7a9be;
+}
+tr:nth-child(even) {
+  background-color: #1c1c1c;
+}
+th,
+td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 24px;
+  text-align: left;
+}
+td:hover {
+  color: antiquewhite;
+}
+th {
+  color: #fffffe;
+}
+td {
+  color: #a7a9be;
+  font-size: 16px;
+  transition: all 0.3s;
+}
 .hover-effect::before {
   content: "";
   display: block;

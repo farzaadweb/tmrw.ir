@@ -17,6 +17,7 @@ watch(
   () => route.params.slug,
   () => {
     discover();
+    page = 1;
   }
 );
 
