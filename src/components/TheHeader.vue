@@ -22,12 +22,12 @@ let smHeaderStatus = $ref<boolean>(false);
       </div>
       <div class="w-full z-50">
         <ul class="text-white-1 text-center">
-          <li class="inline-block">Home</li>
+          <li class="inline-block" disabled>Home</li>
           <li class="ml-12 inline-block">
             <router-link to="/shows">Shows</router-link>
           </li>
-          <li class="ml-12 inline-block">AboutUs</li>
-          <li class="ml-12 inline-block">API</li>
+          <li class="ml-12 inline-block" disabled>AboutUs</li>
+          <li class="ml-12 inline-block" disabled>API</li>
         </ul>
       </div>
       <div class="w-full flex justify-end">
@@ -59,14 +59,14 @@ let smHeaderStatus = $ref<boolean>(false);
         class="bg-white-1 overflow-hidden py-4 px-4 -mx-4 relative z-50"
       >
         <ul class="text-base">
-          <li>Home</li>
+          <li disabled>Home</li>
           <li class="mt-3">
             <router-link to="/shows" @click="smHeaderStatus = false"
               >Shows</router-link
             >
           </li>
-          <li class="mt-3">AboutUs</li>
-          <li class="mt-3">API</li>
+          <li class="mt-3" disabled>AboutUs</li>
+          <li class="mt-3" disabled>API</li>
         </ul>
       </div></Transition
     >

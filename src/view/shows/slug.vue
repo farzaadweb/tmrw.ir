@@ -38,7 +38,7 @@ function pageChange(num: number) {
 
 <template>
   <div class="mx-container px-4 lg:px-6 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-6">
+    <div class="grid grid-cols-2 lg:grid-cols-6">
       <MovieCard :list="movies" />
     </div>
     <div class="mt-6">

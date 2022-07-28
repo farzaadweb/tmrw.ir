@@ -4,7 +4,7 @@ let requestURL = $ref<string>("");
 
 export async function fetchdiscover(
   type: "popular" | "topRated" | "upcoming" | number,
-  page: number
+  page?: number
 ) {
   if (type === "popular") {
     requestURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`;

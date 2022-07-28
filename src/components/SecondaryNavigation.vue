@@ -12,7 +12,7 @@ genre();
   <div class="size-full">
     <div class="h-full mx-container flex-all">
       <ul class="flex text-black-3 text-sm lg:text-base">
-        <li class="mx-3 flex items-center group relative z-50">
+        <li class="mx-3 flex items-center group relative z-10">
           <span class="text-sm">Genres</span>
           <Icon icon="ph:caret-down" class="text-sm ml-1" />
           <div

@@ -10,16 +10,16 @@ defineProps<{
 <template>
   <div
     v-for="item in list"
-    class="rounded-sm overflow-hidden my-3 lg:my-4 lg:mx-3 relative group"
+    class="rounded-lg lg:rounded-sm overflow-hidden my-3 lg:my-4 mx-2 lg:mx-3 relative group"
   >
     <img
       :src="BASE_URL(item.poster_path)"
       :alt="item.title"
-      class="h-full select-none group-hover:brightness-50"
+      class="h-full select-none group-hover:brightness-50 transition-all"
     />
     <router-link
       :to="{ name: 'details', params: { slug: item.id } }"
-      class="w-full h-3/5 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-40 absolute bottom-0 py-3 px-3 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+      class="w-full h-full lg:h-3/5 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-40 absolute bottom-0 py-3 px-3 transition-opacity duration-300 opacity-0 group-hover:opacity-100"
     >
       <div>
         <span class="text-sm text-white-2">{{ item.release_date }}</span>
@@ -35,7 +35,9 @@ defineProps<{
           >{{ item.vote_average }}/10</span
         >
       </div>
-      <p class="text-sm text-white-2 mt-1 leading-normal h-16 overflow-hidden">
+      <p
+        class="text-sm text-white-2 mt-1 leading-normal h-20 lg:h-16 overflow-hidden"
+      >
         {{ item.overview }}
       </p>
     </router-link>
